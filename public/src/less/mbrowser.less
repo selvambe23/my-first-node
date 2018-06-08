@@ -1,0 +1,21 @@
+.mobileBrowserPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media @maxImg {
+        background-image: url('@{imgUrl}/bg_gradient_m.jpg');
+    }
+    @media @minImg {
+        background-image: url('@{imgUrl}/bg_gradient_d.jpg');
+    }
+    .content {
+        padding-top: 1em;
+        vertical-align: top;
+        > div {
+            width: 88%;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    
+}

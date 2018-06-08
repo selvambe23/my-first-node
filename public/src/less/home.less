@@ -1,0 +1,437 @@
+.homePage {
+    @media @maxImg {
+        background-image: url('@{imgUrl}/bg_home_m.jpg');
+        background-position: center top;
+    }
+    @media @minImg {
+        background-image: url('@{imgUrl}/bg_home_d.jpg');
+    }
+    .quartzLogo {
+        background: url('@{imgUrl}/360_logo.png') no-repeat 0 0;
+        background-size: contain;
+        width: 6em;
+        height: 4.55em;
+        display: block;
+        margin: 0 auto 0.2em;
+        /*@media @minImg {
+            display: block;
+        }*/
+    }
+    h1 {
+        font-size: 1.45em;
+        line-height: 1.1;
+        margin-bottom: 0.8em;
+        font-family: 'helveticaneueltstd-bdcnbold';
+        font-weight: normal;
+    }
+    .howtoplay  {
+        padding-top: 1.5em;
+        font-size: 1.3em;
+        font-family: 'helveticaneueltstd-bdcnbold';
+        a {
+            font-weight: 800;
+            border-bottom: 1px solid #fff;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            color: @white;
+            /*transition: all .7s;*/
+            /*&:hover {
+                color: #f89921;
+                letter-spacing: 4px;
+                &::after {
+                    width: 100%;
+                    transform: scale(1);
+                }
+            }*/
+            /*&::after {
+                content: "";
+                width: 0;
+                border-bottom: 1px solid #f89921;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                transition: width .7s;
+                z-index: 999;
+            }*/
+        }
+        input {
+            background-color: transparent;
+            font-family: 'helveticaneueltstd-bdcnbold';
+            margin-top: 1em;
+        }
+    }
+    .content {
+        padding-top: 70%;
+        vertical-align: bottom;
+        @media @ms {
+            padding-top: 65%;
+        }
+    }
+    .homeButtons {
+        margin-bottom: 1em;
+    }
+    .tc {
+        opacity: 0.5;
+        padding-top: 1.2em;
+        font-size: 0.85em;
+        @media (min-height: 700px) {
+            padding-top: 7vh;
+        }
+        a {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+        }    
+    }
+    @media @xs { font-size: 15px; }
+    @media @s { font-size: 16px; }
+    @media @sl { font-size: 17px; }
+    @media @sxl { font-size: 18px; }
+    @media @sxxl { font-size: 20px; }
+    @media @m { font-size: 22px; }
+    @media @minImg {
+        font-size: 18px;
+        .content {
+            padding-top: 0;
+            text-align: left;
+            vertical-align: middle;
+            > div {
+                padding-top: 1em;
+                display: inline-block;
+                text-align: center;
+                width: 48%;
+            }
+        }
+        .quartzLogo {
+            margin-bottom: 1em;
+        }
+        h1 {
+            font-size: 0.85em;
+            margin-bottom: 1.8em;
+            line-height: 1.3;
+            br { display: none; }
+            span {
+                display: block;
+            }
+        }
+        .tc {
+            font-size: .75em;
+            padding-top: 3.5em;
+        }
+    }
+    @media @ml { font-size: 19px; }
+    @media @mxl {
+        font-size: 20px;
+        .btn {
+            font-size: 1.4em;
+        }
+        .howtoplay { 
+            font-size: 1.15em; 
+        }
+    }
+    @media @xxl { font-size: 22px; }
+    @media @xxxl { font-size: 23px; }
+}
+
+.howtoPlayPopup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9;
+    @fontsize: 13;
+    font-size:  ~"@{fontsize}px";
+    @media @ms {
+        @fontsize: 14;
+        font-size:  ~"@{fontsize}px";
+    }
+    @media @ml {
+        @fontsize: 16;
+        font-size:  ~"@{fontsize}px";
+    }
+    .popupClose {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 35px;
+        height: 30px;
+        &::before, 
+        &::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            width: 20px;
+            height: 3px;
+            background-color: #fff;
+        }
+        &::before {
+            transform: rotate(45deg);
+            left: 7px;
+        }
+        &::after {
+            transform: rotate(-45deg);
+            right: 8px;
+        }
+    }
+}
+.popupContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 660px;
+    color: #FFF;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    .visible & {
+        .transitionOne {
+            animation: imageContainer1 400ms linear 8s 1 forwards;
+            p {
+                animation: heading 400ms linear 500ms 1 forwards;
+            }
+            .imageContainer {
+                animation: imageContainer 400ms linear 1.2s 1 forwards;
+                img {
+                    animation: imganim 4s linear 1.7s 1 forwards;
+                }
+            }
+        }
+        .transitionTwo {
+            animation: imageContainer1 400ms linear 15.5s 1 forwards;
+            p {
+                animation: heading 400ms linear 9s 1 forwards;
+            }
+            .imageContainer {
+                animation: imageContainer 400ms linear 9.7s 1 forwards;
+                img {
+                    animation: imganim1 4.5s linear 10.2s 1 forwards;
+                }
+            }
+        }
+        .transitionThree {
+            animation: imageContainer1 400ms linear 24s 1 forwards;
+            p {
+                animation: heading 400ms linear 16.5s 1 forwards;
+            }
+            .imageContainer {
+                animation: imageContainer 400ms linear 17.2s 1 forwards;
+                .outlineRobot {
+                    animation: imageContainer 600ms linear 19s 1 forwards;
+                }
+                .handIcon {
+                    animation: handIcon 3s linear 17.7s 1 forwards;
+                }
+            }
+        }
+        .transitionFour {
+            animation: heading 400ms linear 25s 1 forwards;
+            p {
+                animation: congratulations 800ms linear 25.8s 20 forwards;
+            }
+        }
+    }
+    .transitionOne, 
+    .transitionTwo, 
+    .transitionThree {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 330px;
+        width: 90%;
+        p {
+            font-family: 'helveticalt57condensedregular';
+            font-weight: normal;
+            font-size: 1.45em;
+            color: @white;
+            margin-bottom: 1em;
+            opacity: 0;
+            line-height: 1.2;
+        }
+        .imageContainer {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            &:after {
+                content: '';
+                display: block;
+                padding-bottom: 85%;
+            }
+            img {
+                max-width: initial;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+            }
+        }
+    }
+    .transitionThree {
+        .imageContainer {
+            .outlineRobot {
+                position: absolute;
+                top: 28%;
+                left: 85%;
+                opacity: 0;
+                height: auto;
+            }
+            .handIcon {
+                position: absolute;
+                bottom: 2%;
+                right: 50%;
+                z-index: 999;
+                height: auto;
+            }
+        }
+    }
+    .transitionFour {
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        p {
+            font-family: 'helveticalt57condensedregular';
+            font-weight: normal;
+            font-size: 1.45em;
+            color: @white;
+            margin-bottom: 1em;
+            line-height: 1.2;
+            @media @ml {
+                font-size: 2em;
+            }
+        }
+    }
+}
+
+.dialog-fb {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+    height: 100%;
+    .dialogFBContent {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: @white;
+        max-width: 425px;
+        width: 85%;
+    }
+    .signupFB {
+        padding: 1.5em 1.75em;
+        h3 {
+            font-size: 1.35em;
+            color: #222;
+            font-weight: bold;
+            font-family: 'helveticalt55romanregular';
+            margin-bottom: 1.15em;
+        }
+        p {
+            font-size: 1.15em;
+            color: #454545;
+            font-family: 'helveticalt55romanregular';
+        }
+    }
+    .loginButton {
+        text-align: right;
+        background-color: #f2f2f2;
+        border-top: 1px solid #ccc;
+        padding: 0.75em 1.35em;
+        button {
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 8px;
+            margin-left: 8px;
+            background: #9e9e9e;
+            border: 1px solid #454546;
+            color: #fff;
+        }
+        #fbRelogin {
+            background: #627ab6;
+            border: 1px solid #1a3668;
+        }
+    }
+}
+
+@keyframes heading {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes imageContainer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes imganim {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-47%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes imageContainer1 {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes imganim1 {
+    0% {
+        transform: translateX(0);
+    }
+    33% {
+        transform: translateX(-47%);
+    }
+    66% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-30%);
+    }
+}
+@keyframes handIcon {
+    0% {
+        transform: translate(382%, 310%);
+    }
+    50% {
+        transform: translate(52%, 100%);
+    }
+    100% {
+        transform: translate(392%, 160%);
+    }
+}
+@keyframes congratulations {
+    0% {
+        color: @white;
+    }
+    50% {
+        color: #e15a5f;
+    }
+    100% {
+        color: #f99922;
+    }
+}

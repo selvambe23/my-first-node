@@ -1,0 +1,73 @@
+<% include ./partials/header %>
+<div class="page scorePage">
+    <header>
+        <a  href="/" class="tqlogo"></a>
+    </header>
+    <div class="content">
+        <div>
+            <div class="scoredPoints">
+                <h1><%- locales.__('you_have_scored') %></h1>
+                <strong><%= scoreDetail.score %></strong>
+                <h2><%- locales.__('total_points') %></h2>
+                <hr>
+                <h3><%- locales.__('best_score') %>: <%= best %></h3>
+            </div>
+            <%if(newUser){%>
+            <div class="confirmDetails">
+              <div class="hideForm">
+                <p><%- locales.__('confirm_your_details') %></p>
+                <form id="updateUser" method="post" data-parsley-validate="">
+                    <label>
+                        <input id="name" name="name" class="inputForm" data-parsley-required data-parsley-required-message="<%- locales.__('messages_invalid_name') %>" data-parsley-pattern-message="<%- locales.__('messages_pattern_invalid_name') %>" placeholder="Name" type="text" value="<%=user.userName%>" placeholder="Name" />
+                    </label>
+                    <label>
+                        <input id="email" name="email" placeholder="Email" data-parsley-required data-parsley-required-message="<%- locales.__('messages_invalid_email') %>" data-parsley-pattern-message="<%- locales.__('messages_pattern_invalid_email') %>" type="email" class="inputForm" value="<%=user.fbemail%>" placeholder="Email" />
+                        <span id="serverError"></span>
+                    </label>
+                    <div class="terms">
+                        <label class="termsCondition">
+                            <input type="checkbox" id="agree" data-parsley-required data-parsley-required-message="<%- locales.__('messages_terms_fields_are_required') %>" name="agree" value="1">
+                            <span class="checkmark">I accept the <a href="<%=appUrl%>/src/img/terms_conditions.pdf" target="_blank">Terms & Conditions</a></span>
+                        </label>
+                    </div>
+                    <div class="promotions">
+                        <label class="termsCondition">
+                            <input type="checkbox" id="promotion" name="promotion" value="1">
+                            <span class="checkmark"><%- locales.__('receive_promotions') %></span>
+                        </label>
+                    </div>
+                    <div class="confirmButton">
+                        <input type="hidden" name="userId" value="<%=user._id%>" />
+                        <button type="submit" class="btn redButton"><%- locales.__('Confirm_btn') %></button>
+                    </div>
+                </form>
+              </div>
+                <div class="afterSubmit">
+                  <a href="/leaderboard" class="btn redButton"><%- locales.__('leader_board') %></a>
+                </div>
+            </div>
+            <%} else{%>
+            <div class="confirmDetails">
+                <div class="confirmButton">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-href="https://www.facebook.com/TOTALxBadminton" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" data-width="150"></div>
+                    <h6><%- locales.__('fb_like_message_1') %></h6>
+                    <h6><%- locales.__('fb_like_message_2') %></h6>
+                    <div>
+                    <a  data-title="Score Play again" href="/scenes" class="btn redButton playAgain trackEvent"><%- locales.__('play_again') %></a>
+                    </div>
+                    <a data-title="Score LeaderBoard" href="/leaderboard" class="btn redButton trackEvent"><%- locales.__('leader_board') %></a>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=610226182647880&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<% include ./partials/footer %>

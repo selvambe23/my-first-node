@@ -1,0 +1,62 @@
+<% include partials/header.ejs %>
+<div class="page scenesPage">
+    <header>
+        <a href="/" class="tqlogo"></a>
+    </header>
+    <div class="content">
+        <div>
+            <ul class="sceneContainer">
+                    <% scenes.forEach(function(scene) { %>
+                <a class="trackEvent" data-title="Scene <%=scene.scene %>" href="<% if(scene.isactive){%> /scene/<%=scene.scene %> <%} else{%>#<%}%>"><li>
+                    <span class="sceneNumber"><%- locales.__('scene_number') %> <%=scene.scene %></span>
+                    <figure style="background-image: url('<%=scene.sceneImg%>');">
+                        <% if(!scene.isactive){%>
+                            <span class="overlayBG"></span>
+                            <i class="sceneLock"></i>
+                        <% } %>
+                        <% if(scene.isBonus) {%>
+                            <i class="bonusPoint"><em>x2</em><small>Pts</small></i>
+                        <% } %>
+                        <% if(scene.isactive){%>
+                            <% if(scene.bestScore !=0){%>
+                                <!--i class="scenePlayed"></i-->
+                            <%}%>
+                        <% } %>
+                    </figure>
+                    <span class="sceneDescription">
+                        <h4><%= scene.title %></h4>
+                        <% if(scene.isactive){%>
+                            <% if(scene.bestScore !=0){%>
+                                <p>Best Score: <span><%=scene.bestScore%></span></p>
+                            <%}%>
+                        <% } else {%>
+                        <p>Available on: <span><%=scene.formatedDate%></span></p>
+                        <% } %>
+                    </span>
+                </li></a>
+                <% }); %>
+            </ul>
+            <div class="browserBackBtn">
+                <a class="btn browserBack redButton"><%- locales.__('browser_back') %></a>
+            </div>
+            <!--div id="scenecontainer">
+                <ul>
+                    <% scenes.forEach(function(scene) { %>
+                        <% var calssName =  scene.isactive ? 'activeLink': 'inactiveLink' %>
+                        <% if(scene.isBonus) {%>
+                            <span>Bounes Point Available</span>
+                        <% } %>
+                        <% var hrefLink =  scene.isactive ? 'scene/'+scene.scene: '#' %>
+                        <li class="<%= calssName %>">             
+                        <p><a href="<%= hrefLink %>"><%= scene.scene %></a></p>
+                        <p><a href="<%= hrefLink %>"><%= scene.title %></a></p>
+                        <p><img src="<%=scene.sceneImg%>"/></p>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div-->
+        </div>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>

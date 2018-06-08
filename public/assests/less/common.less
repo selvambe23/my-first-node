@@ -1,0 +1,182 @@
+/*** 1. Reset styles ***/
+* { 
+  box-sizing: border-box; 
+}
+
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+body {
+	margin: 0;
+  line-height: 1.4;
+  background-color: #666;
+}
+
+@font-face {
+  font-family: 'helveticalt55romanregular';
+  src: url('../fonts/helvetica_lt_55_roman-webfont.woff2') format('woff2'),
+       url('../fonts/helvetica_lt_55_roman-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'helveticalt57condensedregular';
+  src: url('../fonts/helvetica_lt_57_condensed-webfont.woff2') format('woff2'),
+       url('../fonts/helvetica_lt_57_condensed-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'helveticace-cond_0regular';
+  src: url('../fonts/helveticace-cond_0-webfont.woff2') format('woff2'),
+       url('../fonts/helveticace-cond_0-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'helveticaneueltstd-bdcnbold';
+  src: url('../fonts/helveticaneueltstd-bdcn-webfont.woff2') format('woff2'),
+       url('../fonts/helveticaneueltstd-bdcn-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+article, 
+aside, 
+footer, 
+header, 
+hgroup, 
+main, 
+nav, 
+section, 
+video, 
+iframe, 
+canvas, 
+figure {
+	display: block;
+}
+
+figure, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+img  {
+  margin: 0;
+}
+
+button, 
+input, 
+optgroup, 
+textarea { 
+  /*appearance: none;*/ 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type=number] { 
+  -moz-appearance: textfield;
+}
+a {
+	cursor: pointer;
+	text-decoration: none;
+  &:focus, 
+  &:active { 
+    outline: 0 none; 
+  }
+}
+button { 
+  cursor: pointer; 
+}
+img, 
+picture {
+	outline: 0;
+	max-width: 100%;
+}
+
+*::-webkit-media-controls-panel {
+  display: none!important;
+  -webkit-appearance: none;
+}
+*::--webkit-media-controls-play-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+*:focus,
+*:active {
+	outline: 0 none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.hide { 
+  display: none !important; 
+}
+.clear {
+	clear: both;
+	width: 100%;
+	float: none;
+}
+input, select {
+  &::-webkit-input-placeholder {
+    color: #fff;
+  }
+  &::-moz-placeholder {
+    color: #fff;
+  }
+  &:-ms-input-placeholder {
+    color: #fff;
+  }
+  &:-moz-placeholder {
+    color: #fff;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  border: none;
+  min-width: 6.2em;
+  padding: 0.46em 0.5em;
+  color: @white;
+  font-family: 'helveticaneueltstd-bdcnbold';
+  font-size: 3.63em;
+  @media @xsmall {
+    border-radius: 6px;
+  }
+  @media @small {
+    border-radius: 10px;
+  }
+  @media @small-768 {
+    padding: 0.55em 1.73em;
+  }
+  &.redButton {
+    background-color: @red;
+  }
+}
+.page {
+  min-height: 100vh;
+  position: relative;
+  min-width: 320px;
+}
+.commonBG {
+  background-image: url('../images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  @media @small-768 {
+    background-image: url('../images/bgDesk.jpg');
+  }
+}

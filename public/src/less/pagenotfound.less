@@ -1,0 +1,51 @@
+.pagenotfoundPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media @maxImg {
+        background-image: url('@{imgUrl}/bg_gradient_m.jpg');
+    }
+    @media @minImg {
+        background-image: url('@{imgUrl}/bg_gradient_d.jpg');
+    }
+    .content {
+        padding-top: 1em;
+        vertical-align: top;
+        > div {
+            width: 88%;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    @media @xs { font-size: 12px; }
+    @media @s { font-size: 15px; }
+    @media @sl { font-size: 15px; }
+    @media @sxl { font-size: 16px; }
+    @media @sxxl { font-size: 18px; }
+    @media @m { font-size: 18px; }
+    @media @minImg { font-size: 16px; }
+    .pageNotFound {
+        text-align: center;
+        h1 {
+            font-family: 'helveticaneueltstd-bdcnbold';
+            font-weight: normal;
+            color: @red;
+            font-size: 10em;
+            line-height: 0.8;
+        }
+        h2 {
+            font-family: 'helveticaneueltstd-bdcnbold';
+            font-weight: normal;
+            color: @blue;
+            font-size: 2.53em;
+            margin-bottom: 1em;
+        }
+        h4 {
+            font-family: 'helveticalt57condensedregular';
+            font-weight: normal;
+            color: @white;
+            font-size: 1.4em;
+            margin-bottom: 2em;
+        }
+    }
+}

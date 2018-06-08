@@ -1,0 +1,22 @@
+
+<% include ./partials/header %>
+
+<div class="page scorePage">
+    <header>
+        <a href="/" class="tqlogo"></a>
+    </header>
+    <!--a href="/logout" class="btn btn-default btn-sm">Logout</a-->
+    <div class="content">
+        <div>
+            <div class="desktopText scoredPoints">
+                <h1><%- locales.__('desktop_content') %></h1>
+            </div>
+            <div class="confirmDetails qrCode">
+                <i class="qrCodeBG <%=qrcode%>"></i>
+
+                <!--img src="<%=qrcode%>" alt="Qr Code"/-->
+            </div>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>

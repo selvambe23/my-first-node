@@ -1,0 +1,83 @@
+<% include partials/header.ejs %>
+<div class="page homePage">
+		<header>
+			<a href="/" class="tqlogo"></a>
+		</header>
+    <div class="content">
+        <div>
+            <figure class="quartzLogo"></figure>
+            <h1><%- locales.__('home_heading') %></h1>
+            <% if(!isauth){%>
+              <a href="#" class="btn red" id="connectFB"><span><%- locales.__('play_game') %></span></a>
+              <a href="/wechatlogin" class="btn red trackEvent" data-title="wechat_connect" id="wechatButton"><span><%- locales.__('play_game') %></span></a>
+            <%} else{%>
+            <div class="homeButtons">
+              <a href="/scenes" data-title="Home Scenes" class="btn red trackEvent" id="scenes"><%- locales.__('play_game') %></a>
+            </div>
+              <% if(user.email != null) {%>
+                <a href="/leaderboard" data-title="Home Leaderboard" class="btn red trackEvent"><%- locales.__('leader_board') %></a>
+              <%}%>
+            <%} %>
+            <div class="howtoplay">
+                <a href="#" data-title="How to Play" class="howtoPlayPopupTrigger trackEvent"><span><%- locales.__('how_to_play') %></span></a>
+                <!--<input type="text" id="UserAgent" placeholder="UserAgent"/>
+                <input type="text" id="UserAgentWeixin" placeholder="UserAgentWeixin"/>-->
+            </div>
+            <div class="tc">
+                <a href="<%=appUrl%>/src/img/terms_conditions.pdf" target="_blank"><%- locales.__('terms_conditions') %></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="howtoPlayPopup" role="alert" style="display: none;">
+    <div class="popupContainer">
+        <div class="transitionOne">
+            <p>Turn around to see 360 degree view of the area.</p>
+            <div class="imageContainer">
+                <img src="<%=appUrl%>/src/img/360view.jpg" alt="" />
+            </div>
+        </div>
+        <div class="transitionTwo">
+            <p>Spot the hidden RobotQuartz and tap on it.</p>
+            <div class="imageContainer">
+                <img src="<%=appUrl%>/src/img/360view01.jpg" alt="" />
+            </div>
+        </div>
+        <div class="transitionThree">
+            <p>Your score depends on how soon you're able to spot the hidden RobotQuartz</p>
+            <div class="imageContainer">
+                <img src="<%=appUrl%>/src/img/360view02.jpg" alt="" />
+                <img src="<%=appUrl%>/src/img/outlineGif.gif" class="outlineRobot" alt="" />
+            </div>
+        </div>
+        <div class="transitionFour">
+            <p>You are Ready to Play</p>
+        </div>
+    </div>
+    <a href="#0" class="popupClose"></a>
+</div>
+
+<div class="dialog-fb" style="display:none;">
+    <div class="dialogFBContent">
+        <div class="signupFB">
+            <h3><strong><%= locales.__('fblogin_fb_auth_content')%></strong></h3>
+            <p><%= locales.__('fblogin_error_message')%></p>
+        </div>
+        <div class="loginButton">
+            <button id="fbRelogin" class="active"><%= locales.__('fblogin_retry_btn')%></button>
+            <button class="cancelButton" data-action="close"><%= locales.__('fblogin_cancel_btn')%></button>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    <% if(typeof refLevel !="undefined" && typeof refBy !="undefined" && refLevel!='' && refBy !=''){%>
+      localStorage.refLevel = "<%=refLevel%>";
+      localStorage.refBy    = "<%=refBy%>";
+    <%}else{%>
+      localStorage.removeItem("refLevel");
+      localStorage.removeItem("refBy");     
+    <%}%>
+  </script>
+<% include partials/footer.ejs %>

@@ -1,0 +1,51 @@
+<% include ./partials/header %>
+  <div class="page profilePage">
+    <header>
+      <a href="/" class="tqlogo"></a>
+    </header>
+    <!--a href="/logout" class="btn btn-default btn-sm">Logout</a-->
+    <div class="content">
+      <div>
+        <div class="profile">
+          <figure>
+            <span style="background-image: url(src/img/avadar.jpg)"></span>
+          </figure>
+          <div>
+            <h2>
+              <%= user.userName%>
+            </h2>
+            <!--p>Bangkok</p-->
+          </div>
+        </div>
+        <div class="list">
+          <% Object.keys(scores).map((index)=>{ %>
+            <h4 class="levelHead active">
+              <span>
+                <%- locales.__('level') %>
+                  <%=index%>
+              </span>
+              <!-- <em><%- locales.__('completed') %></em> -->
+            </h4>
+            <ul>
+              <% Object.keys(scores[index]).map((profile, i)=>{ %>
+                <li>
+                  <span>Scene
+                    <%= scores[index][profile].scene%>
+                  </span>
+                  <span>
+                    <%= scores[index][profile].score%> Points</span>
+                </li>
+                <% }) %>
+            </ul>
+            <% }) %>
+              <div class="goBack">
+                <a href="/leaderboard" data-title="Profile LeaderBoard" class="btn redButton trackEvent">
+                  <%- locales.__('leader_board') %>
+                </a>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% include ./partials/footer %>

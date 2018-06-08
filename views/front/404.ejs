@@ -1,0 +1,17 @@
+<% include partials/header.ejs %>
+<div class="page pagenotfoundPage">
+    <header>
+        <a class="tqlogo"></a>
+    </header>
+    <div class="content">
+        <div>
+            <div class="pageNotFound">
+                <h1><%- locales.__('404') %></h1>
+                <h2><%- locales.__('page_not_found') %></h2>
+                <h4><%- locales.__('something_went_wrong') %></h4>
+                <a href="/" class="btn redButton"><%- locales.__('home') %></a>
+            </div>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

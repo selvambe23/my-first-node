@@ -1,0 +1,331 @@
+﻿﻿<style>
+  @font-face {
+    font-family: 'digital-7regular';
+    src: url('../src/font/digital-7-webfont.woff2') format('woff2'),
+    url('../src/font/digital-7-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'helveticaneueltstd-bdcnbold';
+    src: url('../src/font/helveticaneueltstd-bdcn-webfont.woff2') format('woff2'),
+    url('../src/font/helveticaneueltstd-bdcn-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'helveticalt57condensedregular';
+    src: url('../src/font/helvetica_lt_57_condensed-webfont.woff2') format('woff2'),
+    url('../src/font/helvetica_lt_57_condensed-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @-ms-viewport {
+    width: device-width;
+  }
+
+  @media only screen and (min-device-width:800px) {
+    html {
+      overflow: hidden;
+    }
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gTimer {
+    position: absolute;
+    right: 1%;
+    top: 2%;
+    background-color: #df2027;
+    border: 3px solid #000000;
+    padding: 4px 10px;
+    color: #fff;
+    font-family: 'digital-7regular';
+    font-size: 2em;
+    font-weight: normal;
+    z-index: 999;
+  }
+
+  .lookAround {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    z-index: 999;
+    text-align: center;
+  }
+
+  .lookAround i {
+    background-image: url("../src/img/lookAround.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 4em;
+    height: 4.5em;
+    display: inline-block;
+  }
+
+  .lookAround p {
+    font-family: 'helveticaneueltstd-bdcnbold';
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
+
+  @media only screen and (min-width:1000px) {
+    .lookAround i {
+      width: 5em;
+      height: 5.5em;
+    }
+  }
+
+  /* @media all and (orientation: portrait) {
+		.orientationChange {
+			display: none;
+		}
+	}
+	@media all and (orientation: landscape) {
+		.orientationChange {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.98);
+			z-index: 9999999;
+			text-align: center;
+			font-family: 'helveticalt57condensedregular';
+			font-weight: normal;
+		}
+		.orientation {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+		}
+		.orientation i {
+			background-image: url("../src/img/bg_orientation.png");
+			background-repeat: no-repeat;
+			background-size: contain;
+			width: 4em;
+			height: 4.5em;
+			display: inline-block;
+		}
+		.orientation h5 {
+			color: #fff;
+			font-size: 1.5em;
+		}
+		.orientation h6 {
+			color: #ed7d81;
+			font-size: 1.25em;
+		}
+	} */
+
+  .gradientEffect {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.67);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.67) 0%, rgba(255, 255, 255, 0.13) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.67)), color-stop(100%, rgba(255, 255, 255, 0.13)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.67) 0%, rgba(255, 255, 255, 0.13) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.67) 0%, rgba(255, 255, 255, 0.13) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.67) 0%, rgba(255, 255, 255, 0.13) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.67) 0%, rgba(255, 255, 255, 0.13) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=0);
+  }
+
+  @media only screen and (min-width:768px) {
+    .gradientEffect {
+      background: inherit;
+    }
+  }
+
+  #overlay {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 2;
+    cursor: pointer;
+    z-index: 9999999;
+  }
+
+  #overlay span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'helveticalt57condensedregular';
+    font-weight: normal;
+    font-size: 1.5em;
+    color: #fff;
+  }
+</style>
+<% include ../partials/header %>
+  <% var sceneId = scene.scene %>
+
+    <script src="<%= appUrl %>/views/front/scene/tour.js"></script>
+
+    <div id="overlay">
+      <span>Loading...</span>
+    </div>
+    <!--div class="orientationChange">
+	<div class="orientation">
+		<i></i>
+		<h5>Please change your orientation</h5>
+		<h6>We recommend to switch off the auto rotate mode in your device</h6>
+	</div>
+</div-->
+    <div id="gTimer" class="gTimer">00:00</div>
+    <div class="gradientEffect"></div>
+    <div class="lookAround">
+      <i></i>
+      <p>Look Around</p>
+    </div>
+    <div id="pano" style="width:100%;height:100%;">
+      <noscript>
+        <table style="width:100%;height:100%;">
+          <tr style="vertical-align:middle;">
+            <td>
+              <div style="text-align:center;">ERROR:
+                <br/>
+                <br/>Javascript not activated
+                <br/>
+                <br/>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </noscript>
+      <script>
+
+        function startup() {
+          var el = document.getElementById("pano");
+          el.addEventListener("touchmove", handleMove, false);
+        }
+
+        function handleMove(evt) {
+          //alert("Swipe Disabled");
+          var el = document.getElementsByTagName("pano");
+          evt.stopPropagation();
+          evt.preventDefault();
+        }
+        startup();
+
+
+        typeof localStorage.jwtToken === 'undefined' ? localStorage.jwtToken = "<%=user.jwtToken%>" : localStorage.jwtToken;
+        var flatPoint = parseInt(15);
+        var timeLimit = parseInt(50);
+        embedpano({
+          swf: "<%= appUrl %>/views/front/scene/tour.swf",
+          xml: "<%= appUrl %>/views/front/scene/tour.xml",
+          target: "pano",
+          html5: "auto",
+          mobilescale: 1.0,
+          passQueryParameters: true,
+          onready: addHotSpot,
+          initvars: { panosId: "<%=sceneId%>" }
+        });
+
+        function addHotSpot(krpano) {
+          var krpano = document.getElementById("krpanoSWFObject");
+          var hptAth = <%= cordinate.ath %>;
+          var hptAtv = <%= cordinate.atv %>;
+          var scale = <%= cordinate.scale %>;
+          var spotname = "robo";
+          var str = `
+            addhotspot(${spotname});
+            set(hotspot[${spotname}].url,/views/front/scene/img/icon.png);
+            set(hotspot[${spotname}].ath, ${hptAth});
+            set(hotspot[${spotname}].atv, ${hptAtv});
+            set(hotspot[${spotname}].scale, ${scale});
+            set(hotspot[${spotname}].zoom,true);
+            set(hotspot[${spotname}].keep,true);`;
+          krpano.call(str);
+          krpano.set("events.onloadcomplete", gameStart);
+          setTimeout(function () { document.getElementById("overlay").style.display = "none"; }, 2000);
+        }
+
+        function gameStart() {
+          var sceneId = "<%=sceneId %>";
+          var localSec = localStorage.getItem('gameSec'+sceneId);
+          var startSec = localSec != null && localSec !== 0 ? localSec : 0;
+          var display = document.querySelector('#gTimer');
+          var timer = startSec, minutes, seconds, milliSeconds;
+          var milliTimer = 0;
+          window.timer = setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+            milliSeconds = parseInt(milliTimer % 100, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            localStorage.setItem('gameSec'+sceneId, parseInt(startSec));
+            localStorage.setItem('milliSec', parseInt(milliSeconds));
+            display.textContent = minutes + ":" + seconds;
+            if (milliSeconds == 10) {
+              ++startSec
+              ++timer
+            }
+            ++milliTimer
+          }, 10);
+        }
+
+        function hotspotCallback(hsname) {
+          var sceneId = "<%=sceneId %>";
+          var endTime = parseInt(localStorage.getItem('gameSec'+sceneId))
+            , score = (endTime <= 30 && endTime !== 0) ? timeLimit - endTime : flatPoint,
+            milliSec = localStorage.milliSec;
+          console.log("##### Your Score is" + score);
+          console.log("##### Exact Completed Seconds" + localStorage.gameSec);
+          console.log("##### Exact Completed Seconds" + milliSec);
+          clearInterval(window.timer);
+          localStorage.removeItem('gameSec'+sceneId);
+          localStorage.removeItem('milliSec');
+          submitScore(score, milliSec);
+        }
+
+        function submitScore(score, milliSec) {
+          axios({
+            url: "<%=appUrl%>/saveScore",
+            method: "post",
+            data: {
+              score: score,
+              milliSec: milliSec,
+              sceneId: "<%=sceneId %>",
+              isBonus: "<%=scene.isBonus%>"
+            },
+            headers: { "Authorization": "bearer " + localStorage.jwtToken }
+          })
+            .then(function (data) {
+              var obj = JSON.stringify(data);
+              if (obj.error != 0)
+                window.location.href = '/score';
+            })
+            .catch(function (error) {
+              if (error.response)
+                console.log(error.response);
+            });
+        }
+      </script>
+
+    </div>
+    <% include ../partials/footer %>

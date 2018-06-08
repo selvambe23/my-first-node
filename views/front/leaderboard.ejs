@@ -1,0 +1,90 @@
+<% include ./partials/header %>
+<div class="page leaderboardPage">
+    <header>
+        <a href="/" class="tqlogo"></a>
+    </header>
+    <div class="content">
+        <div>
+            <div class="leaderboardList">
+                <h1><%- locales.__('leader_board') %></h1>
+                <ul>
+                  <% var maxCount = 9, flag = false; index=1; %>
+                  <%Object.keys(topUsers).forEach(function(key){%>
+                    <% if(flag){
+                      maxCount = 10;
+                    } %>
+
+                    <% if (index <= maxCount) { %> 
+                      <% if ( String(user._id) == String(topUsers[key].id)){%>
+                        <% flag = true; %>
+                      <%}%>
+                      <li class="<%=topUsers[key].class%>">
+                        <span class="number"><%= topUsers[key].rank %>.</span>
+                        <span class="name"><%=topUsers[key].userName%></span>
+                        <span class="points"><%=topUsers[key].refbonusScore %>
+                        <% if(topUsers[key].referredCount !=0 && topUsers[key].class !=''){%>
+                          <a id="leaderboardToolTip" class="toolTip">
+                          <small>
+                          Game score : <%=topUsers[key].totalScore%><br />
+                          Referred score : <%=topUsers[key].extraPoint%> 
+                          </small>
+                        </a>
+                        <%}%>
+                        </span>
+                      </li>
+                      <div style="clear: both;"></div>
+                    <%}%>
+
+                    <% if ( !flag && String(user._id) == String(topUsers[key].id)){%>
+                      <li class="<%=topUsers[key].class%>">
+                        <span class="number"><%= topUsers[key].rank %>.</span>
+                        <span class="name"><%=topUsers[key].userName%></span>
+                        <span class="points"><%=topUsers[key].refbonusScore %> 
+                        <% if(topUsers[key].referredCount !=0){%>
+                          <a id="leaderboardToolTip" class="toolTip">
+                          <small>
+                          Game score : <%=topUsers[key].totalScore%><br />
+                          Referred score : <%=topUsers[key].extraPoint%> 
+                          </small>
+                        </a>
+                        <%}%>
+                        </span>
+                      </li>
+                      <div style="clear: both;"></div>
+                    <%}%>
+
+                  <% index++ });%>
+                </ul>
+            </div>
+            <div class="playAgain">
+                <p><a data-title="Leaderboard Play again" href="/scenes" class="btn redButton trackEvent"><%- locales.__('play_again') %></a></p>
+                <p><a data-title="Leaderboard Profile" href="/profile" class="btn redButton trackEvent"><%- locales.__('profile') %></a></p>
+                <p><%- locales.__('share_this_game') %> <a href="#" class="sharepopupTrigger">[i]</a></p>
+                
+                <span id="inviteLink"><%= user.shortUrl %></span>
+                <small id="clipboard" style="display:none;">Invite Url Copied</small>
+
+                <a href="#" class="fb" id="fbShare" title="share via FB"></a>
+                <a href="#" class="twit" id="twitterShare" title="Share via Twitter"></a>
+                <a href="#" class="clipboard" id="copyToClipboard" title="copy to clipboard"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sharefriendsPopup" role="alert" style="display: none;">
+    <div class="sharepopupContainer">
+        <div class="sharepopupContent">
+          <h3>You can multiply your score and advance on the leaderboard by referring your friends to play the game.</h3>
+          <ul>
+            <li>Refer 1 to 4 friends, points multiply by 1</li>
+            <li>Refer 5 to 9 friends, points multiply by 2</li>
+            <li>Refer 10 to 14 friends, points multiply by 3</li>
+            <li>Refer 15 and more, points multiply by 4</li>
+          </ul>
+        </div>
+    </div>
+    <a href="#0" class="sharepopupClose"></a>
+</div>
+
+<% include ./partials/footer %>
